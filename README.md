@@ -28,6 +28,8 @@ You can specify these arguments using `--function_name` and `--initial_point` as
 
     python SpawnGD_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
 
+![Fig_github](https://github.com/user-attachments/assets/f0681ba7-2c3b-4d4d-af37-bdc4542b9e22)
+
 To evaluate and display the performance of various methods with random starting points over 100 iterations, run the following code:
 
     python SpawnGD_Random_Init_Point.py
