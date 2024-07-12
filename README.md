@@ -1,4 +1,4 @@
-# Spawn_Gradient_Descent
+# Spawn Gradient Descent
 We have provided all the functions, methods under test, and the proposed method in a single file. 
 
 The methods being tested include:
@@ -22,7 +22,7 @@ By default, a simple quadratic function is used as the test function, with the i
 - Ackley
 - Matyas
 - Stretched Quadratic
-- Quadratic
+- Quadratic(by default)
 
 For the starting point, you should select numbers within the range of `0.0 to 1.0`. 
 
