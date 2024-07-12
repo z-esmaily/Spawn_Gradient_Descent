@@ -13,26 +13,27 @@ The methods being tested include:
 
 To evaluate and display the performance of various methods with a fixed starting point, run the following code:
 
-  python SpawnGD_Fix_Init_Point.py
+    python SpawnGD_Fix_Init_Point.py
   
-By default, a simple quadratic function is used as the test function, with the initial starting point set to [0.0, 0.5]. However, you can select any of the following functions:
+By default, a simple quadratic function is used as the test function, with the initial starting point set to ‍‍‍‍`[0.0, 0.5]`. However, you can select any of the following functions:
 
-Rosenbrock
-Schaffer
-Ackley
-Matyas
-Stretched Quadratic
-Quadratic
-For the starting point, you should select numbers within the range of 0.0 to 1.0. 
+- Rosenbrock
+- Schaffer
+- Ackley
+- Matyas
+- Stretched Quadratic
+- Quadratic
 
-You can specify these arguments using --function_name and --initial_point as follows:
+For the starting point, you should select numbers within the range of `0.0 to 1.0`. 
 
-  python SpawnGD_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
+You can specify these arguments using `--function_name` and `--initial_point` as follows:
+
+    python SpawnGD_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
 
 To evaluate and display the performance of various methods with random starting points over 100 iterations, run the following code:
 
-  python SpawnGD_Random_Init_Point.py
+    python SpawnGD_Random_Init_Point.py
   
 Here too, by default, a simple quadratic function is used as the test function. However, you can change this by selecting the desired function name as follows:
 
-  python SpawnGD_Random_Init_Point.py --function_name <function_name>
+    python SpawnGD_Random_Init_Point.py --function_name <function_name>
