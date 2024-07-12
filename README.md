@@ -1,5 +1,6 @@
 # Spawn Gradient Descent
-We have provided all the functions, methods under test, and the proposed method in a single file. 
+We have provided all the functions, methods under test, and the proposed method in a single file.
+
 The methods being tested include:
 - Proposed Method (SpawnGD)
 - Gradient Descent
