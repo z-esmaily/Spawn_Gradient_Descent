@@ -43,7 +43,7 @@ Here too, by default, a simple quadratic function is used as the test function. 
     python SpawnGD_Random_Init_Point.py --function_name <function_name>
 
 ----
-##CIFAR Dataset Testing
+## CIFAR Dataset Testing
 
 For testing on the **CIFAR** dataset, we based our implementation on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. Our optimizer is defined in the `spawngd.py` file located in the *optimizers* folder. 
 
