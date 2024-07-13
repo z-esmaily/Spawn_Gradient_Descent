@@ -37,3 +37,6 @@ To evaluate and display the performance of various methods with random starting 
 Here too, by default, a simple quadratic function is used as the test function. However, you can change this by selecting the desired function name as follows:
 
     python SpawnGD_Random_Init_Point.py --function_name <function_name>
+
+For testing on the CIFAR dataset, we used the existing code from the [SRSGD]https://github.com/minhtannguyen/SRSGD method. Our optimizer is defined in the 'spawngd.py' file located in the *optimizers folder. Experiments were conducted on the *ResNet and *DenseNet models. The trained models are stored in the *checkpoint directory. To compare different methods and view the results, you can run the 'SPAWNGD.ipynb' notebook. All of the above materials are available through this [Google Drive link]https://drive.google.com/drive/folders/1jp--CqS57AgXeLgCOx1HfgFDYy_c7pCo?usp=drive_link.
+
