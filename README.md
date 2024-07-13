@@ -10,6 +10,8 @@ The methods being tested include:
 - MOMENTUM
 - RMSPROP
 
+## Fixed Starting Point Evaluation
+
 To evaluate and display the performance of various methods with a fixed starting point, run the following code:
 
     python SpawnGD_Fix_Init_Point.py
@@ -20,7 +22,7 @@ By default, a simple quadratic function is used as the test function, with the i
 - Ackley
 - Matyas
 - Stretched Quadratic
-- Quadratic(by default)
+- Quadratic(default)
 
 For the starting point, you should select numbers within the range of `0.0 to 1.0`. 
 
@@ -30,7 +32,7 @@ You can specify these arguments using `--function_name` and `--initial_point` as
 
 ![Fig_github](https://github.com/user-attachments/assets/f0681ba7-2c3b-4d4d-af37-bdc4542b9e22)
 
-----
+## Random Starting Point Evaluation Section
 
 To evaluate and display the performance of various methods with random starting points over 100 iterations, run the following code:
 
@@ -41,8 +43,9 @@ Here too, by default, a simple quadratic function is used as the test function. 
     python SpawnGD_Random_Init_Point.py --function_name <function_name>
 
 ----
+##CIFAR Dataset Testing
 
-For testing on the **CIFAR** dataset, we based our implmentaation on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. Our optimizer is defined in the `spawngd.py` file located in the *optimizers* folder. 
+For testing on the **CIFAR** dataset, we based our implementation on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. Our optimizer is defined in the `spawngd.py` file located in the *optimizers* folder. 
 
 Experiments were conducted on the *ResNet* and *DenseNet* models. The trained models are stored in the *checkpoint* directory. To compare different methods and view the results, you can run the `SPAWNGD.ipynb` notebook. 
 
