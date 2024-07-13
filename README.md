@@ -31,6 +31,7 @@ You can specify these arguments using `--function_name` and `--initial_point` as
     python SpawnGD_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
 
 ![Fig_github](https://github.com/user-attachments/assets/f0681ba7-2c3b-4d4d-af37-bdc4542b9e22)
+Figure: Plot of points obtained by various methods on the quadratic function with a fixed starting point of [0.0, 0.5] over 27 steps.
 
 ## Random Starting Point Evaluation Section
 
