@@ -1,4 +1,4 @@
-# Spawn Gradient Descent
+# Spawn Gradient Descent (SpGD)
 *Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Algorithm for Enhanced Deep Neural Networks" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
 
 ## Overview
