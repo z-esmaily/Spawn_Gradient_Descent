@@ -1,5 +1,5 @@
 # Spawn Gradient Descent (SpGD)
-*Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Algorithm for Enhanced Deep Neural Networks" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
+*Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): Enhancing Gradient-Based Optimization" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
 
 ## Overview
 SpGD enhances traditional gradient-based optimization techniques by optimizing movement patterns, selecting appropriate starting points, and dynamically adjusting the learning rate using the Augmented Gradient Descent (AGD) algorithm. These innovations reduce zigzagging, improve initial positioning, and eliminate the need for manual learning rate tuning. SpGD incorporates controlled randomization to address limitations of traditional methods, outperforming existing techniques in execution time and accuracy. It is particularly suitable for training deep learning models, achieving improved accuracy quickly and demonstrating efficient convergence with high accuracy in a relatively short number of iterations.
