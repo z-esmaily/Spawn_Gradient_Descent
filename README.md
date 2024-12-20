@@ -2,9 +2,10 @@
 *Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
 
 ## Overview
-Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves gradient-based methods by addressing common challenges like zigzagging, suboptimal initialization, and manual learning rate tuning. SpGD introduces dynamic learning rate adjustment through Augmented Gradient Descent (AGD), controlled randomization for better exploration, and optimized movement patterns for enhanced convergence. It achieves remarkable accuracy on benchmarks, such as a near-zero error (1.7e-11) on convex functions like Quadratic, and significantly better proximity to global optima on non-convex functions like Ackley. SpGD also excels in deep learning tasks, achieving faster convergence and higher accuracy—e.g., 85% accuracy on CIFAR-10 in just 20 epochs using DenseNet-19, demonstrating its efficiency in large-scale neural network training and challenging optimization tasks.
+Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves gradient-based methods by addressing common challenges such as zigzagging, suboptimal initialization, and manual learning rate tuning. SpGD introduces dynamic learning rate adjustment through Augmented Gradient Descent (AGD), controlled randomization for better exploration, and optimized movement patterns for enhanced convergence. It achieves remarkable accuracy on benchmarks, such as a near-zero error (1.7e-11) on convex functions like Quadratic, and significantly better proximity to global optima on non-convex functions like Ackley. SpGD also excels in deep learning tasks, achieving faster convergence and higher accuracy—e.g., 85% accuracy on CIFAR-10 in just 20 epochs using DenseNet-19, demonstrating its efficiency in large-scale neural network training and challenging optimization tasks.
 
-----
+---
+
 ## Provided Methods
 The implementation includes the following optimization methods:
 - Adabelief
@@ -17,12 +18,16 @@ The implementation includes the following optimization methods:
 - GD (Gradient Descent)
 - SpGD (Proposed Method)
 
+---
+
 ## Evaluation of Optimization Methods
 
-### Evaluation with Fixed Starting Points
-To evaluate and display the performance of various methods with a fixed starting point, run the following code:
+### Fixed Starting Point
+To evaluate the runtime and minimum distance to the answer for various methods with a fixed starting point, run the following code:
 
-    python Compare_Fix_Init_Point.py
+```bash
+python Compare_Fix_Init_Point.py
+```
 
 By default, a simple quadratic function is used as the test function, with the initial starting point set to `[0.0, 0.5]`. However, you can select any of the following functions:
 - Naive_Quadratic (default)
@@ -37,14 +42,15 @@ For most functions, the starting point should be selected within the range of 0.
 
 You can specify these arguments using `--function_name` and `--initial_point` as follows:
 
-    python Compare_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
+```bash
+python Compare_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
+```
 
-If you encounter the following issue: "A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 as it may crash." Use numpy==1.26.4.
-
+If you encounter the issue: *"A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 as it may crash,"* use `numpy==1.26.4`.  
 If you encounter an error during execution, especially for the Rastrigin function in the proposed method, disable the break command.
 
 #### Plot of Points for the Quadratic Function
-Plot of points obtained by various methods on the quadratic function with a fixed starting point of [0.0, 0.5] over 27 steps:
+**Plot of points obtained by various methods on the quadratic function with a fixed starting point of `[0.3, 0.5]` over 27 steps:**
 
 <p align="center">
   <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="250" />
@@ -63,7 +69,7 @@ Plot of points obtained by various methods on the quadratic function with a fixe
 </p>
 
 #### Plot of Points for the Ackley Function
-Plot of points obtained by various methods on the Ackley function with a fixed starting point of [0.0, 0.5] over 27 steps:
+**Plot of points obtained by various methods on the Ackley function with a fixed starting point of `[0.3, 0.5]` over 27 steps:**
 
 <p align="center">
   <img src="Images/Ackley/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="250" />
@@ -81,20 +87,30 @@ Plot of points obtained by various methods on the Ackley function with a fixed s
   <img src="Images/Ackley/PROPOSED_bw_zoomed.png" alt="SPGD" width="250" />
 </p>
 
-----
-### Evaluation with Random Starting Points
-To evaluate and display the performance of various methods with random starting points over 100 iterations, run the following code:
+---
 
-    python Compare_Random_Init_Point.py
+### Random Starting Points
+To evaluate the average runtime and minimum distance to the answer for various methods with random starting points over 100 iterations, run the following code:
+
+```bash
+python Compare_Random_Init_Point.py
+```
 
 By default, a simple quadratic function is used as the test function. However, you can change this by selecting the desired function name as follows:
 
-    python Compare_Random_Init_Point.py --function_name <function_name>
+```bash
+python Compare_Random_Init_Point.py --function_name <function_name>
+```
 
-#### Evaluation of Time Efficiency
-Evaluation of the average computation time of various methods with random starting points over 100 iterations:
+#### Time Efficiency Evaluation
+To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 
-----
+```bash
+python Compare_Time_with_Random_Init_Point.py
+```
+
+---
+
 ## CIFAR Dataset Testing
 
 For testing on the **CIFAR** dataset, we based our implementation on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. Our optimizer is defined in the `spawngd.py` file located in the *optimizers* folder.
