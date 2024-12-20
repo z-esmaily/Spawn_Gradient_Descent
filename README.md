@@ -112,13 +112,8 @@ python Compare_SpawnGD_Random_InitPoint_ٍEps_toMin.py
 
 ---
 
-## Integration of SpGD in Deep Learning Models
-## Integration of SpGD in Deep Learning Models
-SpGD showcases its effectiveness in deep learning by addressing common challenges such as slow convergence and entrapment in local minima. This method was integrated into ResNet-20 and DenseNet-19 models and evaluated using the CIFAR-10 and Fashion-MNIST datasets.
-
-- **CIFAR-10**: A benchmark dataset containing 60,000 32×32 color images distributed across 10 classes, including categories like airplanes, cars, and animals.
-- **Fashion-MNIST**: A dataset comprising 70,000 grayscale images organized into 10 fashion-related categories (e.g., shirts, shoes, and bags), offering a more challenging alternative to the traditional MNIST dataset.
-
+## SpGD in Deep Learning Models
+SpGD showcases its effectiveness in deep learning by addressing common challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into **ResNet-20** and **DenseNet-19** models and evaluated on the **CIFAR-10** and **Fashion-MNIST** datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers in deep learning tasks.
 ### Implementation and Experimentation
 Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the *optimizers* folder.
 
@@ -128,10 +123,10 @@ To evaluate the average runtime and minimum distance to the optimal solution for
 python Compare_SpawnGD.py
 ```
 
-In these experiments, SpGD employs only its spawning step, while the adaptive learning rate mechanism is excluded for simplicity. During spawn steps, a single spawn point is generated. The experimental pattern consists of a standard SGD step followed by an SGD step with spawning. 
+In these experiments, SpGD employs only its spawning step, while the adaptive learning rate mechanism is excluded for simplicity. During spawn steps, a single spawn point is generated. The experimental pattern consists of a standard SGD step followed by an SGD with spawning step. 
 
 ### Findings
-The spawning step contributes to better exploration during optimization, which enhances exploitation in subsequent SGD steps. An alternative version of the optimizer, **spawngdMS**, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
+The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, **spawngdMS**, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
 
 ### Results
 SpGD demonstrates remarkable improvements in both convergence speed and accuracy:
@@ -139,11 +134,3 @@ SpGD demonstrates remarkable improvements in both convergence speed and accuracy
 - **Fashion-MNIST**: Reached 93% accuracy on ResNet-20 in just 25 epochs.
 
 These results highlight the significant impact of the spawning step in improving exploration and efficiency during training, making SpGD a powerful alternative to traditional optimization methods for deep learning tasks.
-
-
-
-For testing on the **CIFAR** dataset, we based our implementation on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. Our optimizer is defined in the `spawngd.py` file located in the *optimizers* folder.
-
-Experiments were conducted on the *ResNet* and *DenseNet* models. The trained models are stored in the *checkpoint* directory. To compare different methods and view the results, you can run the `SPAWNGD.ipynb` notebook.
-
-All materials related to the CIFAR dataset testing are available through this [Google Drive link](https://drive.google.com/drive/folders/1jp--CqS57AgXeLgCOx1HfgFDYy_c7pCo?usp=drive_link).
