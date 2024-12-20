@@ -47,38 +47,38 @@ If you encounter an error during execution, especially for the Rastrigin functio
 Plot of points obtained by various methods on the quadratic function with a fixed starting point of [0.0, 0.5] over 27 steps:
 
 <p align="center">
-  <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="320" />
-  <img src="Images/Quadratic/ADAM_bw_zoomed.png" alt="ADAM" width="320" />
-  <img src="Images/Quadratic/NADAM_bw_zoomed.png" alt="NADAM" width="320" />
+  <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="250" />
+  <img src="Images/Quadratic/ADAM_bw_zoomed.png" alt="ADAM" width="250" />
+  <img src="Images/Quadratic/NADAM_bw_zoomed.png" alt="NADAM" width="250" />
 </p>
 <p align="center">
-  <img src="Images/Quadratic/RADAM_bw_zoomed.png" alt="RADAM" width="320" />
-  <img src="Images/Quadratic/MOMENTUM_bw_zoomed.png" alt="MOMENTUM" width="320" />
-  <img src="Images/Quadratic/SRSGD_bw_zoomed.png" alt="SRSGD" width="320" />
+  <img src="Images/Quadratic/RADAM_bw_zoomed.png" alt="RADAM" width="250" />
+  <img src="Images/Quadratic/MOMENTUM_bw_zoomed.png" alt="MOMENTUM" width="250" />
+  <img src="Images/Quadratic/SRSGD_bw_zoomed.png" alt="SRSGD" width="250" />
 </p>
 <p align="center">
-  <img src="Images/Quadratic/RMSPROP_bw_zoomed.png" alt="RMSPROP" width="320" />
-  <img src="Images/Quadratic/Gradient_Descent_bw_zoomed.png" alt="GD" width="320" />
-  <img src="Images/Quadratic/PROPOSED_bw_zoomed.png" alt="SPGD" width="320" />
+  <img src="Images/Quadratic/RMSPROP_bw_zoomed.png" alt="RMSPROP" width="250" />
+  <img src="Images/Quadratic/Gradient_Descent_bw_zoomed.png" alt="GD" width="250" />
+  <img src="Images/Quadratic/PROPOSED_bw_zoomed.png" alt="SPGD" width="250" />
 </p>
 
 #### Plot of Points for the Ackley Function
 Plot of points obtained by various methods on the Ackley function with a fixed starting point of [0.0, 0.5] over 27 steps:
 
 <p align="center">
-  <img src="Images/Ackley/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="320" />
-  <img src="Images/Ackley/ADAM_bw_zoomed.png" alt="ADAM" width="320" />
-  <img src="Images/Ackley/NADAM_bw_zoomed.png" alt="NADAM" width="320" />
+  <img src="Images/Ackley/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="250" />
+  <img src="Images/Ackley/ADAM_bw_zoomed.png" alt="ADAM" width="250" />
+  <img src="Images/Ackley/NADAM_bw_zoomed.png" alt="NADAM" width="250" />
 </p>
 <p align="center">
-  <img src="Images/Ackley/RADAM_bw_zoomed.png" alt="RADAM" width="320" />
-  <img src="Images/Ackley/MOMENTUM_bw_zoomed.png" alt="MOMENTUM" width="320" />
-  <img src="Images/Ackley/SRSGD_bw_zoomed.png" alt="SRSGD" width="320" />
+  <img src="Images/Ackley/RADAM_bw_zoomed.png" alt="RADAM" width="250" />
+  <img src="Images/Ackley/MOMENTUM_bw_zoomed.png" alt="MOMENTUM" width="250" />
+  <img src="Images/Ackley/SRSGD_bw_zoomed.png" alt="SRSGD" width="250" />
 </p>
 <p align="center">
-  <img src="Images/Ackley/RMSPROP_bw_zoomed.png" alt="RMSPROP" width="320" />
-  <img src="Images/Ackley/Gradient_Descent_bw_zoomed.png" alt="GD" width="320" />
-  <img src="Images/Ackley/PROPOSED_bw_zoomed.png" alt="SPGD" width="320" />
+  <img src="Images/Ackley/RMSPROP_bw_zoomed.png" alt="RMSPROP" width="250" />
+  <img src="Images/Ackley/Gradient_Descent_bw_zoomed.png" alt="GD" width="250" />
+  <img src="Images/Ackley/PROPOSED_bw_zoomed.png" alt="SPGD" width="250" />
 </p>
 
 ----
