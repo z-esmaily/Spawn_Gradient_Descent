@@ -46,19 +46,19 @@ If you encounter an error during execution, especially for the Rastrigin functio
 
 ![Fig_github](https://github.com/user-attachments/assets/f0681ba7-2c3b-4d4d-af37-bdc4542b9e22)
 <p align="center">
-  <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="Image 1" width="200" />
-  <img src="Images/Quadratic/ADAM_bw_zoomed.png" alt="Image 2" width="200" />
-  <img src="Images/Quadratic/NADAM_bw_zoomed.png" alt="Image 3" width="200" />
+  <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="Image 1" width="300" />
+  <img src="Images/Quadratic/ADAM_bw_zoomed.png" alt="Image 2" width="300" />
+  <img src="Images/Quadratic/NADAM_bw_zoomed.png" alt="Image 3" width="300" />
 </p>
 <p align="center">
-  <img src="Images/Quadratic/RADAM_bw_zoomed.png" alt="Image 4" width="200" />
-  <img src="Images/Quadratic/MOMENTUM_bw_zoomed.png" alt="Image 5" width="200" />
-  <img src="Images/Quadratic/SRSGD_bw_zoomed.png" alt="Image 6" width="200" />
+  <img src="Images/Quadratic/RADAM_bw_zoomed.png" alt="Image 4" width="300" />
+  <img src="Images/Quadratic/MOMENTUM_bw_zoomed.png" alt="Image 5" width="300" />
+  <img src="Images/Quadratic/SRSGD_bw_zoomed.png" alt="Image 6" width="300" />
 </p>
 <p align="center">
-  <img src="Images/Quadratic/RMSPROP_bw_zoomed.png" alt="Image 7" width="200" />
-  <img src="Images/Quadratic/Gradient Descent_bw_zoomed.png" alt="Image 8" width="200" />
-  <img src="Images/Quadratic/PROPOSED_bw_zoomed.png" alt="Image 9" width="200" />
+  <img src="Images/Quadratic/RMSPROP_bw_zoomed.png" alt="Image 7" width="300" />
+  <img src="Images/Quadratic/Gradient_Descent_bw_zoomed.png" alt="Image 8" width="300" />
+  <img src="Images/Quadratic/PROPOSED_bw_zoomed.png" alt="Image 9" width="300" />
 </p>
 
 
