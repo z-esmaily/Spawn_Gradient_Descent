@@ -45,15 +45,15 @@ If you encounter the following issue: "A module that was compiled using NumPy 1.
 If you encounter an error during execution, especially for the Rastrigin function in the proposed method, disable the break command.
 
 ![Fig_github](https://github.com/user-attachments/assets/f0681ba7-2c3b-4d4d-af37-bdc4542b9e22)
-![Image 1]([URL 1](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/ADABELIEF_bw_zoomed.png))
-![Image 2]([URL 2](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/ADAM_bw_zoomed.png))
-![Image 3]([URL 3](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/NADAM_bw_zoomed.png))
-![Image 4]([URL 4](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/RADAM_bw_zoomed.png))
-![Image 5]([URL 5](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/MOMENTUM_bw_zoomed.png))
-![Image 6]([URL 6](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/SRSGD_bw_zoomed.png))
-![Image 7]([URL 7](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/RMSPROP_bw_zoomed.png))
-![Image 8]([URL 8](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/Gradient Descent_bw_zoomed.png))
-![Image 9]([URL 9](https://github.com/z-esmaily/Spawn_Gradient_Descent/blob/main/Images/Quadratic/PROPOSED_bw_zoomed.png))
+![Image 1](Images/Quadratic/ADABELIEF_bw_zoomed.png)
+![Image 2](Images/Quadratic/ADAM_bw_zoomed.png)
+![Image 3](Images/Quadratic/NADAM_bw_zoomed.png)
+![Image 4](Images/Quadratic/RADAM_bw_zoomed.png))
+![Image 5](Images/Quadratic/MOMENTUM_bw_zoomed.png)
+![Image 6](Images/Quadratic/SRSGD_bw_zoomed.png)
+![Image 7](Images/Quadratic/RMSPROP_bw_zoomed.png)
+![Image 8](Images/Quadratic/Gradient_Descent_bw_zoomed.png)
+![Image 9](Images/Quadratic/PROPOSED_bw_zoomed.png)
 
   Figure: Plot of points obtained by various methods on the quadratic function with a fixed starting point of [0.0, 0.5] over 27 steps.
 
