@@ -57,7 +57,7 @@ If you encounter an error during execution, especially for the Rastrigin functio
 </p>
 <p align="center">
   <img src="Images/Quadratic/RMSPROP_bw_zoomed.png" alt="RMSPROP" width="330" />
-  <img src="Images/Quadratic/Gradient_Descent_bw_zoomed.png" alt="GD" width="3340" />
+  <img src="Images/Quadratic/Gradient_Descent_bw_zoomed.png" alt="GD" width="330" />
   <img src="Images/Quadratic/PROPOSED_bw_zoomed.png" alt="SPGD" width="330" />
 </p>
 <p align="center">
@@ -72,7 +72,7 @@ If you encounter an error during execution, especially for the Rastrigin functio
 </p>
 <p align="center">
   <img src="Images/Ackley/RMSPROP_bw_zoomed.png" alt="RMSPROP" width="330" />
-  <img src="Images/Ackley/Gradient_Descent_bw_zoomed.png" alt="GD" width="3340" />
+  <img src="Images/Ackley/Gradient_Descent_bw_zoomed.png" alt="GD" width="330" />
   <img src="Images/Ackley/PROPOSED_bw_zoomed.png" alt="SPGD" width="330" />
 </p>
 
