@@ -93,25 +93,54 @@ If you encounter an error during execution, especially for the Rastrigin functio
 To evaluate the average runtime and minimum distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 
 ```bash
-python Compare_Random_Init_Point.py
+python Compare_SpawnGD_Fix_InitPoint.py
 ```
 
 By default, a simple quadratic function is used as the test function. However, you can change this by selecting the desired function name as follows:
 
 ```bash
-python Compare_Random_Init_Point.py --function_name <function_name>
+python Compare_SpawnGD_Random_InitPoint.py --function_name <function_name>
 ```
 
 #### Time Efficiency Evaluation
+To better compare convergence speeds, we considered the time required for each optimizer to reach a specified distance (epsilon) from the optimal solution. Each optimizer was executed 100 times for each benchmark function, and the average execution time was recorded. By default, epsilon was set to 0.01 for convex functions and 0.1 for non-convex functions.
 To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 
 ```bash
-python Compare_Time_with_Random_Init_Point.py
+python Compare_SpawnGD_Random_InitPoint_ٍEps_toMin.py
 ```
 
 ---
 
-## CIFAR Dataset Testing
+## Integration of SpGD in Deep Learning Models
+## Integration of SpGD in Deep Learning Models
+SpGD showcases its effectiveness in deep learning by addressing common challenges such as slow convergence and entrapment in local minima. This method was integrated into ResNet-20 and DenseNet-19 models and evaluated using the CIFAR-10 and Fashion-MNIST datasets.
+
+- **CIFAR-10**: A benchmark dataset containing 60,000 32×32 color images distributed across 10 classes, including categories like airplanes, cars, and animals.
+- **Fashion-MNIST**: A dataset comprising 70,000 grayscale images organized into 10 fashion-related categories (e.g., shirts, shoes, and bags), offering a more challenging alternative to the traditional MNIST dataset.
+
+### Implementation and Experimentation
+Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the *optimizers* folder.
+
+To evaluate the average runtime and minimum distance to the optimal solution for various optimizers, you can run the following code:
+
+```bash
+python Compare_SpawnGD.py
+```
+
+In these experiments, SpGD employs only its spawning step, while the adaptive learning rate mechanism is excluded for simplicity. During spawn steps, a single spawn point is generated. The experimental pattern consists of a standard SGD step followed by an SGD step with spawning. 
+
+### Findings
+The spawning step contributes to better exploration during optimization, which enhances exploitation in subsequent SGD steps. An alternative version of the optimizer, **spawngdMS**, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
+
+### Results
+SpGD demonstrates remarkable improvements in both convergence speed and accuracy:
+- **CIFAR-10**: Achieved 85% accuracy on DenseNet-19 after only 20 epochs.
+- **Fashion-MNIST**: Reached 93% accuracy on ResNet-20 in just 25 epochs.
+
+These results highlight the significant impact of the spawning step in improving exploration and efficiency during training, making SpGD a powerful alternative to traditional optimization methods for deep learning tasks.
+
+
 
 For testing on the **CIFAR** dataset, we based our implementation on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. Our optimizer is defined in the `spawngd.py` file located in the *optimizers* folder.
 
