@@ -4,7 +4,6 @@
 ## Overview
 Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves gradient-based methods by addressing common challenges like zigzagging, suboptimal initialization, and manual learning rate tuning. SpGD introduces dynamic learning rate adjustment through Augmented Gradient Descent (AGD), controlled randomization for better exploration, and optimized movement patterns for enhanced convergence. It achieves remarkable accuracy on benchmarks, such as a near-zero error (1.7e-11) on convex functions like Quadratic, and significantly better proximity to global optima on non-convex functions like Ackley. SpGD also excels in deep learning tasks, achieving faster convergence and higher accuracy—e.g., 85% accuracy on CIFAR-10 in just 20 epochs using DenseNet-19, demonstrating its efficiency in large-scale neural network training and challenging optimization tasks.
 
-
 ----
 ## Provided Methods
 The implementation includes the following optimization methods:
@@ -38,14 +37,13 @@ For most functions, the starting point should be selected within the range of 0.
 You can specify these arguments using `--function_name` and `--initial_point` as follows:
 
     python Compare_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
-
     
-
 If you encounter the following issue: "A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 as it may crash." Use numpy==1.26.4.
+
 If you encounter an error during execution, especially for the Rastrigin function in the proposed method, disable the break command.
 
-![Fig_github](https://github.com/user-attachments/assets/f0681ba7-2c3b-4d4d-af37-bdc4542b9e22)
 <p align="center">
+  Plot of points obtained by various methods on the quadratic function with a fixed starting point of [0.0, 0.5] over 27 steps.
   <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="330" />
   <img src="Images/Quadratic/ADAM_bw_zoomed.png" alt="ADAM" width="330" />
   <img src="Images/Quadratic/NADAM_bw_zoomed.png" alt="NADAM" width="330" />
@@ -88,7 +86,7 @@ Here too, by default, a simple quadratic function is used as the test function. 
 
     python Compare_Random_Init_Point.py --function_name <function_name>
 
-## Random Starting Point Evaluation with considering an epsilon value for
+##  with considering an epsilon distane to minimum point 
 
 ----
 ## CIFAR Dataset Testing
