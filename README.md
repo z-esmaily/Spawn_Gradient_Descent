@@ -39,7 +39,7 @@ The implementation includes the following optimization methods:
 To evaluate the runtime and minimum distance to the answer for various methods with a fixed starting point, run the following code:
 
 ```bash
-python Compare_SpawnGD_Fix_InitPoint.py --function_name <function_name>
+python Compare_SpawnGD_Fix_InitPoint.py
 ```
 
 By default, a simple quadratic function is used as the test function, with the initial starting point set to `[0.0, 0.5]`. However, you can select any of the following functions:
@@ -106,7 +106,7 @@ If you encounter an error during execution, especially for the Rastrigin functio
 To evaluate the average runtime and minimum distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 
 ```bash
-python Compare_SpawnGD_Fix_InitPoint.py --function_name <function_name>
+python Compare_SpawnGD_Random_InitPoint.py --function_name <function_name>
 ```
 
 By default, a simple quadratic function is used as the test function. However, you can change this by selecting the desired function name as follows:
