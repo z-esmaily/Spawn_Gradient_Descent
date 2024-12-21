@@ -47,7 +47,7 @@ By default, a simple quadratic function is used as the test function, with the i
 - Rastrigin
 - Levy
 
-For most functions, the starting point should be selected within the range of 0.0 to 1.0 or within the defined bounds for them.
+For most functions, the starting point should be selected within the range of `0.0 to 1.0` or within the defined bounds for them.
 
 You can specify these arguments using `--function_name` and `--initial_point` as follows:
 
@@ -102,7 +102,7 @@ If you encounter an error during execution, especially for the Rastrigin functio
 To evaluate the average runtime and minimum distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 
 ```bash
-python Compare_SpawnGD_Fix_InitPoint.py
+python Compare_SpawnGD_Fix_InitPoint.py --function_name <function_name>
 ```
 
 By default, a simple quadratic function is used as the test function. However, you can change this by selecting the desired function name as follows:
@@ -112,21 +112,25 @@ python Compare_SpawnGD_Random_InitPoint.py --function_name <function_name>
 ```
 
 #### Time Efficiency Evaluation
+<p align="justify">
 To better compare convergence speeds, we considered the time required for each optimizer to reach a specified distance (epsilon) from the optimal solution. Each optimizer was executed 100 times for each benchmark function, and the average execution time was recorded. By default, epsilon was set to 0.01 for convex functions and 0.1 for non-convex functions.
 To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code:
-
+</p>
 ```bash
 python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 ```
 
 ---
 ## SpGD in Deep Learning Models
+<p align="justify">
 SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into **ResNet-20** and **DenseNet-19** models and evaluated on the **CIFAR-10** and **Fashion-MNIST** datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
-
+</p>
 ### Implementation and Experimentation
+<p align="justify">
 Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the *Deep_implementation/optimizers* path.
 
 To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
+</p>
 
 ```bash
 python Cifar_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
@@ -138,21 +142,29 @@ For the Fashion-MNIST dataset, use the `FashionMnist_Compare_Best_Accuracy_Time.
 python FashionMnist_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
 ```
 --arch: Specifies the model architecture to use (e.g., densenet or resnet).
+
 --depth: Defines the number of layers in the model (e.g., 19 for DenseNet or 20 for ResNet).
+
 --epochs: The number of training epochs to run.
+
 --checkpoint: Path where model checkpoints will be saved.
 
+<p align="justify">
 In these experiments, SpGD employs only its spawning step, excluding the adaptive learning rate mechanism for simplicity. During spawning steps, a single spawn point is generated. The experimental pattern alternates between a standard SGD step and an SGD with a spawning step.
+</p>
 
 ### Findings
+<p align="justify">
 The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, **spawngdMS**, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
-
+</p>
 ### Results
 SpGD demonstrates remarkable improvements in both convergence speed and accuracy:
 - **CIFAR-10**: Achieved 85% accuracy on DenseNet-19 after only 28 epochs.
 - **Fashion-MNIST**: Reached 93% accuracy on ResNet-20 in just 25 epochs.
 
+<p align="justify">
 These results highlight the significant impact of the spawning step in improving exploration and efficiency during training, making SpGD a powerful alternative to traditional optimization methods for deep learning tasks.
+</p>
 
 <p align="center">
   <img src="Images/Deep_Plot_Images/Cifar10_Densenet.jpg" alt="CIFAR-10 DenseNet" width="400" height="250" style="margin-right: 20px;" />
