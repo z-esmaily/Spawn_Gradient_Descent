@@ -39,7 +39,7 @@ The implementation includes the following optimization methods:
 To evaluate the runtime and minimum distance to the answer for various methods with a fixed starting point, run the following code:
 
 ```bash
-python Compare_SpawnGD_Fix_InitPoint.py
+python Compare_SpawnGD_Fix_InitPoint.py --function_name <function_name>
 ```
 
 By default, a simple quadratic function is used as the test function, with the initial starting point set to `[0.0, 0.5]`. However, you can select any of the following functions:
