@@ -129,14 +129,18 @@ Our implementation is based on the existing code from the [SRSGD](https://github
 To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
 
 ```bash
-python Cifar_Compare_Best_Accuracy_Time.py
+python Cifar_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
 ```
 
 For the Fashion-MNIST dataset, use the `FashionMnist_Compare_Best_Accuracy_Time.py` file:
 
 ```bash
-python FashionMnist_Compare_Best_Accuracy_Time.py
+python FashionMnist_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
 ```
+--arch: Specifies the model architecture to use (e.g., densenet or resnet).
+--depth: Defines the number of layers in the model (e.g., 19 for DenseNet or 20 for ResNet).
+--epochs: The number of training epochs to run.
+--checkpoint: Path where model checkpoints will be saved.
 
 In these experiments, SpGD employs only its spawning step, excluding the adaptive learning rate mechanism for simplicity. During spawning steps, a single spawn point is generated. The experimental pattern alternates between a standard SGD step and an SGD with a spawning step.
 
