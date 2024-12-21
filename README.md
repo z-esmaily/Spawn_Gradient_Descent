@@ -1,6 +1,6 @@
 # Spawn Gradient Descent (SpGD)
 <p align="justify">
-*Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
+<em>Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.<em>
 </p>
 
 ## Table of Contents
@@ -128,7 +128,7 @@ python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 ---
 ## SpGD in Deep Learning Models
 <p align="justify">
-SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into **ResNet-20** and **DenseNet-19** models and evaluated on the **CIFAR-10** and **Fashion-MNIST** datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
+SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into <b>ResNet-20</b> and <b>DenseNet-19</b> models and evaluated on the <b>CIFAR-10</b> and <b>Fashion-MNIST</b> datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
 </p>
 
 ### Implementation and Experimentation
@@ -145,9 +145,9 @@ For the Fashion-MNIST dataset, use the `FashionMnist_Compare_Best_Accuracy_Time.
 ```bash
 python FashionMnist_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
 ```
---arch: Specifies the model architecture to use (e.g., densenet or resnet).
---depth: Defines the number of layers in the model (e.g., 19 for DenseNet or 20 for ResNet).
---epochs: The number of training epochs to run.
+--arch: Specifies the model architecture to use (e.g., densenet or resnet).<br>
+--depth: Defines the number of layers in the model (e.g., 19 for DenseNet or 20 for ResNet).<br>
+--epochs: The number of training epochs to run.<br>
 --checkpoint: Path where model checkpoints will be saved.
 
 <p align="justify">
@@ -156,7 +156,7 @@ In these experiments, SpGD employs only its spawning step, excluding the adaptiv
 
 ### Findings
 <p align="justify">
-The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, <b>spawngdMS</b>, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
+The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, <b>spawngdMS</b>, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the <i>optimizers</i> *optimizers* folder.
 </p>
 
 ### Results
