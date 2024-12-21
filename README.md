@@ -1,5 +1,7 @@
 # Spawn Gradient Descent (SpGD)
+<p align="justify">
 *Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
+</p>
 
 ## Table of Contents
 1. [Overview](#overview)
@@ -11,7 +13,9 @@
    - [Implementation and Experimentation](#implementation-and-experimentation)
 
 ## Overview
+<p align="justify">
 Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves gradient-based methods by addressing common challenges such as zigzagging, suboptimal initialization, and manual learning rate tuning. SpGD introduces dynamic learning rate adjustment through Augmented Gradient Descent (AGD), controlled randomization for better exploration, and optimized movement patterns for enhanced convergence. It achieves remarkable accuracy on benchmarks, such as a near-zero error (1.7e-11) on convex functions like Quadratic, and significantly better proximity to global optima on non-convex functions like Ackley. SpGD also excels in deep learning tasks, achieving faster convergence and higher accuracy—e.g., 85% accuracy on CIFAR-10 in just 20 epochs using DenseNet-19, demonstrating its efficiency in large-scale neural network training and challenging optimization tasks.
+</p>
 
 ---
 
@@ -116,6 +120,7 @@ python Compare_SpawnGD_Random_InitPoint.py --function_name <function_name>
 To better compare convergence speeds, we considered the time required for each optimizer to reach a specified distance (epsilon) from the optimal solution. Each optimizer was executed 100 times for each benchmark function, and the average execution time was recorded. By default, epsilon was set to 0.01 for convex functions and 0.1 for non-convex functions.
 To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 </p>
+
 ```bash
 python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 ```
@@ -125,12 +130,11 @@ python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 <p align="justify">
 SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into **ResNet-20** and **DenseNet-19** models and evaluated on the **CIFAR-10** and **Fashion-MNIST** datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
 </p>
+
 ### Implementation and Experimentation
-<p align="justify">
 Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the *Deep_implementation/optimizers* path.
 
 To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
-</p>
 
 ```bash
 python Cifar_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
@@ -142,11 +146,8 @@ For the Fashion-MNIST dataset, use the `FashionMnist_Compare_Best_Accuracy_Time.
 python FashionMnist_Compare_Best_Accuracy_Time.py --arch <model architecture> --depth <model depth> --epochs < number of epochs> --checkpoint <checkpoint path>
 ```
 --arch: Specifies the model architecture to use (e.g., densenet or resnet).
-
 --depth: Defines the number of layers in the model (e.g., 19 for DenseNet or 20 for ResNet).
-
 --epochs: The number of training epochs to run.
-
 --checkpoint: Path where model checkpoints will be saved.
 
 <p align="justify">
@@ -155,8 +156,9 @@ In these experiments, SpGD employs only its spawning step, excluding the adaptiv
 
 ### Findings
 <p align="justify">
-The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, **spawngdMS**, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
+The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, <b>spawngdMS</b>, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the *optimizers* folder.
 </p>
+
 ### Results
 SpGD demonstrates remarkable improvements in both convergence speed and accuracy:
 - **CIFAR-10**: Achieved 85% accuracy on DenseNet-19 after only 28 epochs.
