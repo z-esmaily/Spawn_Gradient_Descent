@@ -1,6 +1,6 @@
 # Spawn Gradient Descent (SpGD)
 <p align="justify">
-<em>Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.<em>
+<em>Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.</em>
 </p>
 
 ## Table of Contents
@@ -156,7 +156,7 @@ In these experiments, SpGD employs only its spawning step, excluding the adaptiv
 
 ### Findings
 <p align="justify">
-The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, <b>spawngdMS</b>, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the <i>optimizers</i> *optimizers* folder.
+The spawning step improves exploration during optimization, enabling more effective exploitation in subsequent SGD steps. An alternative version of our optimizer, <b>spawngdMS</b>, introduces more frequent spawning steps relative to SGD steps. This version, along with the standard SpGD, can be found in the <code>optimizers</code> folder.
 </p>
 
 ### Results
