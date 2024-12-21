@@ -1,6 +1,15 @@
 # Spawn Gradient Descent (SpGD)
 *Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.*
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Provided Methods](#provided-methods)
+3. [Evaluation in 2D Space](#evaluation-of-optimization-methods-in-2d-space)
+   - [Fixed Starting Point](#fixed-starting-point)
+   - [Random Starting Points](#random-starting-points)
+4. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
+   - [Implementation and Experimentation](#implementation-and-experimentation)
+
 ## Overview
 Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves gradient-based methods by addressing common challenges such as zigzagging, suboptimal initialization, and manual learning rate tuning. SpGD introduces dynamic learning rate adjustment through Augmented Gradient Descent (AGD), controlled randomization for better exploration, and optimized movement patterns for enhanced convergence. It achieves remarkable accuracy on benchmarks, such as a near-zero error (1.7e-11) on convex functions like Quadratic, and significantly better proximity to global optima on non-convex functions like Ackley. SpGD also excels in deep learning tasks, achieving faster convergence and higher accuracy—e.g., 85% accuracy on CIFAR-10 in just 20 epochs using DenseNet-19, demonstrating its efficiency in large-scale neural network training and challenging optimization tasks.
 
@@ -115,9 +124,9 @@ python Compare_SpawnGD_Random_InitPoint_ٍEps_toMin.py
 SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into **ResNet-20** and **DenseNet-19** models and evaluated on the **CIFAR-10** and **Fashion-MNIST** datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
 
 ### Implementation and Experimentation
-Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the *optimizers* folder.
+Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the *Deep_implementation/optimizers* path.
 
-To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `deep_implementation` folder with the following command:
+To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
 
 ```bash
 python Cifar_Compare_Best_Accuracy_Time.py
