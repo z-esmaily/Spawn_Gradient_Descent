@@ -58,7 +58,7 @@ def gradient_descent(bounds, n_iter, step_size_gd):
     return solutions, abs(np.float_(solutions[-1]) - final_answer_value)
 
 
-############################ gradient descent with tuned step size ###############################
+############################ gradient descent with tuned step size (AGD) ###############################
 def gradient_descent_by_tune_stepsize(bounds, n_iter, step_size_gd):
 	solutions = list()
 	x = initial_point.copy()
@@ -72,10 +72,10 @@ def gradient_descent_by_tune_stepsize(bounds, n_iter, step_size_gd):
 	for itr in range(n_iter):
 		dist_to_ans = abs(objective(x) - final_answer_value)
 		if (dist_to_ans <= epsilon):
-			print("gradient tuned step iterations", itr)
+			print("AGD (gradient tuned step) iterations", itr)
 			break
 		else:
-			print("iter: (", itr, ")  distance to answer for GD tuned step:", dist_to_ans)
+			print("iter: (", itr, ")  distance to answer for AGD:", dist_to_ans)
 
 		g = derivative(x)
 		g_sign = np.sign(g)
@@ -850,7 +850,7 @@ if __name__ == "__main__":
     solutions, dist_gd_tuned_step = gradient_descent_by_tune_stepsize(bounds, n_iter, step_size_gd)
     runtimes_gd_tuned_step.append(time()-start_gd_tuned_step)
     dists_gd_tuned_step.append(dist_gd_tuned_step)
-    show_contour(objective_func, solutions, str('Gradient Descent tuneed stepsize'))
+    show_contour(objective_func, solutions, str('Gradient Descent tuneed stepsize (AGD)'))
 
     # perform the adam
     start_adam = time()
