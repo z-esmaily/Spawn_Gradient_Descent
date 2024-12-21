@@ -58,8 +58,8 @@ You can specify these arguments using `--function_name` and `--initial_point` as
 ```bash
 python Compare_SpawnGD_Fix_InitPoint.py --function_name <function_name> --initial_point <initial_point>
 ```
-After running the code, the plots are automatically saved in the `plots_<function_name>` folder.
-If you encounter the issue: *"A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 as it may crash,"* use `numpy==1.26.4`.  
+After running the code, the plots are automatically saved in the `plots_<function_name>` folder. </br>
+If you encounter the issue: *"A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 as it may crash,"* use `numpy==1.26.4`.</br>
 If you encounter an error during execution, especially for the Rastrigin function in the proposed method, disable the break command.
 
 #### Plot of Points for the Quadratic Function
