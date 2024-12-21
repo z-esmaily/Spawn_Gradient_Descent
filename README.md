@@ -116,7 +116,7 @@ To better compare convergence speeds, we considered the time required for each o
 To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code:
 
 ```bash
-python Compare_SpawnGD_Random_InitPoint_ٍEps_toMin.py
+python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 ```
 
 ---
