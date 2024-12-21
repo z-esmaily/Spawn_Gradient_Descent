@@ -50,7 +50,7 @@ If you encounter the issue: *"A module that was compiled using NumPy 1.x cannot 
 If you encounter an error during execution, especially for the Rastrigin function in the proposed method, disable the break command.
 
 #### Plot of Points for the Quadratic Function
-**Plot of points obtained by various methods on the quadratic function with a fixed starting point of `[0.3, 0.5]` over 27 steps:**
+**Points obtained by various methods on the quadratic function with a fixed starting point of `[0.3, 0.5]` over 27 steps:**
 
 <p align="center">
   <img src="Images/Quadratic/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="250" />
@@ -69,7 +69,7 @@ If you encounter an error during execution, especially for the Rastrigin functio
 </p>
 
 #### Plot of Points for the Ackley Function
-**Plot of points obtained by various methods on the Ackley function with a fixed starting point of `[0.3, 0.5]` over 27 steps:**
+**Points obtained by various methods on the Ackley function with a fixed starting point of `[0.3, 0.5]` over 27 steps:**
 
 <p align="center">
   <img src="Images/Ackley/ADABELIEF_bw_zoomed.png" alt="ADABELIEF" width="250" />
