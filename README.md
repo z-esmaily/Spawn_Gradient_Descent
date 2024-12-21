@@ -35,7 +35,7 @@ The implementation includes the following optimization methods:
 To evaluate the runtime and minimum distance to the answer for various methods with a fixed starting point, run the following code:
 
 ```bash
-python Compare_Fix_Init_Point.py
+python Compare_SpawnGD_Fix_InitPoint.py
 ```
 
 By default, a simple quadratic function is used as the test function, with the initial starting point set to `[0.0, 0.5]`. However, you can select any of the following functions:
@@ -52,7 +52,7 @@ For most functions, the starting point should be selected within the range of 0.
 You can specify these arguments using `--function_name` and `--initial_point` as follows:
 
 ```bash
-python Compare_Fix_Init_Point.py --function_name <function_name> --initial_point <initial_point>
+python Compare_SpawnGD_Fix_InitPoint.py --function_name <function_name> --initial_point <initial_point>
 ```
 
 If you encounter the issue: *"A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 as it may crash,"* use `numpy==1.26.4`.  
