@@ -175,4 +175,4 @@ These results highlight the significant impact of the spawning step in improving
 
 ---
 
-For ease of use with execution commands, you can utilize the 'SPGD.ipynb'
+For ease of use with execution commands, you can utilize the `SPGD.ipynb`
