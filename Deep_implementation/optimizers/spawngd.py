@@ -31,8 +31,8 @@ class SpawnGD(Optimizer):
                     param_state['prev_params_buffers'] = [torch.clone(p.data).detach(), torch.clone(p.data).detach()]
                 else:
                     param_state['prev_params_buffers'] = [param_state['prev_params_buffers'][1], torch.clone(p.data).detach()]
-
-                # Now apply updates based on epoch
+                
+                # updates based on epoch
                 if epoch == 0 or epoch % 2 == 0:  # Pure SGD
                     p.data = p.data - group['lr'] * d_p
                 else:  # SGD + Spawn
@@ -44,10 +44,4 @@ class SpawnGD(Optimizer):
                         diff_params = p.data - param_state['prev_params_buffers'][0]
                         length, next_sign = torch.abs(diff_params), torch.sign(diff_params)
                         p.data = p.data + next_sign * (length * torch.rand_like(p.data))
-                                                
-                        # # Generate exponential samples with rate=1.0  ----> very bad
-                        # exp_dist = torch.distributions.exponential.Exponential(rate=1.0)
-                        # exp_samples = exp_dist.sample(p.data.size()).to(p.data.device)
-                        # p.data = p.data + next_sign * (length * exp_samples)
-
         return loss
