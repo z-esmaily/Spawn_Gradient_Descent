@@ -23,6 +23,7 @@ import models.fashion_mnist as models  # Changed to fashion_mnist models
 from utils import Bar, Logger, AverageMeter, accuracy, mkdir_p, savefig
 from optimizers.srsgd import SRSGD
 from optimizers.spawngd import SpawnGD
+from optimizers.spawngd_ms import SpawnGD_MS
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
@@ -42,7 +43,7 @@ parser.add_argument('--train-batch', default=128, type=int, metavar='N',
                     help='train batchsize')
 parser.add_argument('--test-batch', default=100, type=int, metavar='N',
                     help='test batchsize')
-parser.add_argument('--optimizer', default='sgd', type=str, choices=['adamw', 'adam', 'radam', 'sgd', 'srsgd', 'spawngd'])
+parser.add_argument('--optimizer', default='sgd', type=str, choices=['adamw', 'adam', 'radam', 'sgd', 'srsgd', 'spawngd', 'spawngd_ms'])
 parser.add_argument('--lr', '--learning-rate', default=0.1, type=float,
                     metavar='LR', help='initial learning rate')
 parser.add_argument('--beta1', default=0.9, type=float,
@@ -62,8 +63,6 @@ parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
                     help='momentum')
 parser.add_argument('--weight-decay', '--wd', default=5e-4, type=float,
                     metavar='W', help='weight decay (default: 1e-4)')
-parser.add_argument('--spawn-schedule', '--spns', type=int, nargs='+', default=4,
-                    help='spawn after these amounts of epochs')
 # Checkpoints
 parser.add_argument('-c', '--checkpoint', default='checkpoint', type=str, metavar='PATH',
                     help='path to save checkpoint (default: checkpoint)')
@@ -181,7 +180,8 @@ def main():
         'Adam': optim.Adam(model.parameters(), lr=args.lr * 0.1, betas=(args.beta1, args.beta2), weight_decay=args.weight_decay),
         'RAdam': optim.RAdam(model.parameters(), lr=args.lr * 0.1, betas=(args.beta1, args.beta2), weight_decay=args.weight_decay),
         'SRSGD': SRSGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay, iter_count=1, restarting_iter=args.restart_schedule[0]),
-        'SpawnGD': SpawnGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+        'SpawnGD': SpawnGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay),
+        # 'SpawnGD_MS': SpawnGD_MS(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     }
 
     # Dictionary to store runtimes for each optimizer
@@ -292,6 +292,8 @@ def train(trainloader, model, criterion, optimizer, epoch, use_cuda, logger):
         
         # Check optimizer type before calling step
         if isinstance(optimizer, SpawnGD):
+            optimizer.step(epoch)
+        elif isinstance(optimizer, SpawnGD_MS):
             optimizer.step(epoch)
         elif isinstance(optimizer, SRSGD):
             optimizer.step()
