@@ -172,4 +172,7 @@ These results highlight the significant impact of the spawning step in improving
   <img src="Images/Deep_Plot_Images/Cifar10_Densenet.jpg" alt="CIFAR-10 DenseNet" width="400" height="250" style="margin-right: 20px;" />
   <img src="Images/Deep_Plot_Images/FashionMnist_Resnet.jpg" alt="Fashion-MNIST ResNet" width="400" height="250" style="margin-left: 20px;" />
 </p>
+
+---
+
 For ease of use with execution commands, you can utilize the 'SPGD.ipynb'
