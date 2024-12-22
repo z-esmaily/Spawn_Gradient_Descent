@@ -23,6 +23,7 @@ import models.cifar as models
 from utils import Bar, Logger, AverageMeter, accuracy, mkdir_p, savefig
 from optimizers.srsgd import SRSGD
 from optimizers.spawngd import SpawnGD
+from optimizers.spawngd_ms import SpawnGD_MS
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
@@ -42,7 +43,7 @@ parser.add_argument('--train-batch', default=128, type=int, metavar='N',
                     help='train batchsize')
 parser.add_argument('--test-batch', default=100, type=int, metavar='N',
                     help='test batchsize')
-parser.add_argument('--optimizer', default='sgd', type=str, choices=['adamw', 'adam', 'radam', 'sgd', 'srsgd', 'spawngd'])
+parser.add_argument('--optimizer', default='sgd', type=str, choices=['adamw', 'adam', 'radam', 'sgd', 'srsgd', 'spawngd', 'spawngd_ms'])
 parser.add_argument('--lr', '--learning-rate', default=0.1, type=float,
                     metavar='LR', help='initial learning rate')
 parser.add_argument('--beta1', default=0.9, type=float,
@@ -62,8 +63,6 @@ parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
                     help='momentum')
 parser.add_argument('--weight-decay', '--wd', default=5e-4, type=float,
                     metavar='W', help='weight decay (default: 1e-4)')
-parser.add_argument('--spawn-schedule', '--spns', type=int, nargs='+', default=4,
-                    help='spawn after these amounts of epochs')
 # Checkpoints
 parser.add_argument('-c', '--checkpoint', default='checkpoint', type=str, metavar='PATH',
                     help='path to save checkpoint (default: checkpoint)')
@@ -206,6 +205,8 @@ def main():
         optimizer = SRSGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay, iter_count=iter_count, restarting_iter=args.restart_schedule[0])
     elif args.optimizer.lower() == 'spawngd':
         optimizer = SpawnGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    elif args.optimizer.lower() == 'spawngd_ms':
+        optimizer = SpawnGD_MS(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     
     # Resume
     title = 'cifar-10-' + args.arch
@@ -245,7 +246,9 @@ def main():
     
     # Dictionary to store losses and best accuracies for each optimizer
     optimizer_losses = {}
-    best_accuracies = {} 
+    best_accuracies = {}
+    periodic_best_losses = {}
+    periodic_best_accuracies = {}
     
     # List of optimizers to compare - excluding RAdam if not available
     optimizers_to_test = {
@@ -253,21 +256,30 @@ def main():
         'Adam': optim.Adam(model.parameters(), lr=args.lr * 0.1, betas=(args.beta1, args.beta2), weight_decay=args.weight_decay),
         'RAdam': optim.RAdam(model.parameters(), lr=args.lr * 0.1, betas=(args.beta1, args.beta2), weight_decay=args.weight_decay),
         'SRSGD': SRSGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay, iter_count=1, restarting_iter=args.restart_schedule[0]),
-        'SpawnGD': SpawnGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+        'SpawnGD': SpawnGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay),
+        # 'SpawnGD_MS': SpawnGD_MS(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     }
 
+    # Dictionary to store runtimes for each optimizer
+    optimizer_runtimes = {}
+    
     # Train with each optimizer
     for opt_name, optimizer in optimizers_to_test.items():
         print(f"\nTraining with {opt_name}")
-        # Reset model to initial state
         model.load_state_dict(copy.deepcopy(initial_model_state))
         optimizer_losses[opt_name] = []
-        best_acc = 0  # Track best accuracy for this optimizer
-        interval_best_acc = 0  # Track best accuracy for current interval
         
+        periodic_best_losses[opt_name] = []
+        periodic_best_accuracies[opt_name] = []
+
+        best_acc = 0
+        interval_best_acc = 0
+        
+        best_loss = float('inf')
+
         start_time = time.time()
         last_checkpoint_time = start_time
-        
+
         for epoch in range(args.epochs):
             # Train and collect losses
             if isinstance(optimizer, SRSGD):
@@ -278,41 +290,48 @@ def main():
             # Test accuracy
             test_loss, test_acc = test(testloader, model, criterion, epoch, use_cuda, logger)
             interval_best_acc = max(interval_best_acc, test_acc)  # Update interval best
-            best_acc = max(best_acc, test_acc)  # Update overall best
+
+            # Update overall best accuracy and loss
+            best_loss = min(best_loss, test_loss)
+            best_acc = max(best_acc, test_acc)
+
             optimizer_losses[opt_name].append(train_loss)
             
-            # Print runtime and best accuracy every 25 epochs
-            if (epoch + 1) % 25 == 0:
+            # Print runtime and best accuracy every k epochs
+            if (epoch + 1) % 10 == 0:
+                periodic_best_losses[opt_name].append(best_loss)
+                periodic_best_accuracies[opt_name].append(best_acc)
+
                 current_time = time.time()
                 elapsed_time = current_time - last_checkpoint_time
                 total_time = current_time - start_time
                 print(f"{opt_name} - Epoch {epoch + 1}: "
-                      f"Interval Best Acc: {interval_best_acc:.2f}%, "
-                      f"Overall Best Acc: {best_acc:.2f}%, "
-                      f"Last 25 epochs took {elapsed_time:.2f}s, "
-                      f"Total time: {total_time:.2f}s"),
+                    #   f"Interval Best Acc: {interval_best_acc:.2f}%, "
+                      f"Best Accuracy so far: {best_acc:.2f}%, "
+                      f"Lowest Loss so far: {best_loss:.4f}, "                     
+                      f"Last epochs took {elapsed_time:.2f}s, "
+                      f"Total time: {total_time:.2f}s")
                 last_checkpoint_time = current_time
-                interval_best_acc = 0  # Reset interval best accuracy
+                interval_best_acc = 0
         
-        # Calculate and store total runtime
+        # Store total runtime and best accuracy for this optimizer
         total_runtime = time.time() - start_time
+        optimizer_runtimes[opt_name] = total_runtime
+        best_accuracies[opt_name] = best_acc
+        
         print(f"\n{opt_name} Final Results:")
         print(f"Total Runtime: {total_runtime:.2f}s")
         print(f"Best Accuracy: {best_acc:.2f}%")
-        
-        # Store best accuracy for this optimizer
-        best_accuracies[opt_name] = best_acc
 
-    # Print final comparison
+    # Print final comparison with correct runtimes
     print("\nFinal Results:")
     print("-" * 60)
     print(f"{'Optimizer':10s} | {'Best Accuracy':15s} | {'Total Runtime':15s}")
     print("-" * 60)
-    for opt_name, acc in best_accuracies.items():
-        runtime = time.time() - start_time
-        print(f"{opt_name:10s} | {acc:13.2f}%  | {runtime:13.2f}s")
+    for opt_name in optimizers_to_test.keys():
+        print(f"{opt_name:10s} | {best_accuracies[opt_name]:13.2f}%  | {optimizer_runtimes[opt_name]:13.2f}s")
 
-    # Write results to file with the same format
+    # Write results to file with correct runtimes
     with open("./all_results.txt", "a") as f:
         fcntl.flock(f, fcntl.LOCK_EX)
         f.write(f"\n{args.checkpoint}\n")
@@ -320,9 +339,8 @@ def main():
         f.write("-" * 60 + "\n")
         f.write(f"{'Optimizer':10s} | {'Best Accuracy':15s} | {'Total Runtime':15s}\n")
         f.write("-" * 60 + "\n")
-        for opt_name, acc in best_accuracies.items():
-            runtime = time.time() - start_time
-            f.write(f"{opt_name:10s} | {acc:13.2f}%  | {runtime:13.2f}s\n")
+        for opt_name in optimizers_to_test.keys():
+            f.write(f"{opt_name:10s} | {best_accuracies[opt_name]:13.2f}%  | {optimizer_runtimes[opt_name]:13.2f}s\n")
         f.write("\n")
         fcntl.flock(f, fcntl.LOCK_UN)
 
@@ -331,16 +349,42 @@ def main():
     for opt_name, losses in optimizer_losses.items():
         epochs = range(len(losses))
         plt.plot(epochs, losses, label=opt_name)
-    
     plt.xlabel('Epoch')
     plt.ylabel('Loss Value')
     plt.title('Convergence for Different Optimizers')
     plt.legend()
     plt.grid(True)
     plt.yscale('log')  # Use log scale for better visualization
-    
-    # Save the plot
     plt.savefig(os.path.join(args.checkpoint, 'optimizer_comparison.png'))
+    plt.close()
+
+    plt.figure(figsize=(10, 6))
+    for opt_name, Lloss in periodic_best_losses.items():
+        epochs = [i * 10 for i in range(1, len(Lloss) + 1)]
+        plt.plot(epochs, Lloss, label=opt_name)
+    plt.xticks(epochs)
+    plt.xlabel('Epoch')
+    plt.ylabel('Lowest Loss Value')
+    plt.title('Convergence for Different Optimizers every 10 Epochs')
+    plt.legend()
+    plt.grid(True)
+    # plt.yscale('log')
+    plt.savefig(os.path.join(args.checkpoint, 'optimizer_comparison_low_loss.png'))
+    plt.close()
+    plt.figure(figsize=(10, 6))
+
+    for opt_name, Bacc in periodic_best_accuracies.items():
+        # epochs = range(len(Bacc))
+        epochs = [i * 10 for i in range(1, len(Bacc) + 1)]
+        plt.plot(epochs, Bacc, label=opt_name)
+    plt.xticks(epochs)
+    plt.xlabel('Epoch')
+    plt.ylabel('Best Accuracy Value')
+    plt.title('Best Accuracy for Different Optimizers every 10 Epochs')
+    plt.legend()
+    plt.grid(True)
+    # plt.yscale('log')
+    plt.savefig(os.path.join(args.checkpoint, 'optimizer_comparison_Best Accuracy.png'))
     plt.close()
 
 def train(trainloader, model, criterion, optimizer, epoch, use_cuda, logger):
@@ -364,6 +408,8 @@ def train(trainloader, model, criterion, optimizer, epoch, use_cuda, logger):
         
         # Check optimizer type before calling step
         if isinstance(optimizer, SpawnGD):
+            optimizer.step(epoch)
+        elif isinstance(optimizer, SpawnGD_MS):
             optimizer.step(epoch)
         elif isinstance(optimizer, SRSGD):
             optimizer.step()
