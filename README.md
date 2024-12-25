@@ -132,7 +132,7 @@ SpGD showcases its effectiveness in deep learning by addressing challenges such 
 </p>
 
 ### Implementation and Experimentation
-Our implementation is based on the existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) method. The SpGD optimizer is defined in the `spawngd.py` file located in the <code>Deep_implementation/optimizers</code> path.
+Our implementation utilizes existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) for data handling and common model architectures within PyTorch. However, it introduces a novel SpGD optimizer (defined in `spawngd.py'), located in the <code>Deep_implementation/optimizers</code>, to enhance the performance.
 
 To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
 
