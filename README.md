@@ -11,7 +11,7 @@
    - [Random Starting Points](#random-starting-points)
 4. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
    - [Implementation and Experimentation](#implementation-and-experimentation)
-5. [Easy use](#easy_use)
+5. [Easy use](#easy-use)
 
 ## Overview
 <p align="justify">
