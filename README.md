@@ -11,6 +11,7 @@
    - [Random Starting Points](#random-starting-points)
 4. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
    - [Implementation and Experimentation](#implementation-and-experimentation)
+5. [Easy use](#easy_use)
 
 ## Overview
 <p align="justify">
@@ -174,5 +175,5 @@ These results highlight the significant impact of the spawning step in improving
 </p>
 
 ---
-
+## Easy use
 For ease of use with execution commands, you can utilize the `SPGD.ipynb`
