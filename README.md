@@ -161,7 +161,7 @@ The spawning step improves exploration during optimization, enabling more effect
 
 ### Results
 SpGD demonstrates remarkable improvements in both convergence speed and accuracy:
-- **CIFAR-10**: Achieved 85% accuracy on DenseNet-19 after only 28 epochs.
+- **CIFAR-10**: Achieved 80% accuracy on DenseNet-19 after only 28 epochs.
 - **Fashion-MNIST**: Reached 93% accuracy on ResNet-20 in just 25 epochs.
 
 <p align="justify">
