@@ -5,18 +5,39 @@
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [Provided Methods](#provided-methods)
-3. [Evaluation in 2D Space](#evaluation-of-optimization-methods-in-2d-space)
+2. [Installation and Usage](#installation-and-usage)
+3. [Provided Methods](#provided-methods)
+4. [Evaluation in 2D Space](#evaluation-of-optimization-methods-in-2d-space)
    - [Fixed Starting Point](#fixed-starting-point)
    - [Random Starting Points](#random-starting-points)
-4. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
+5. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
    - [Implementation and Experimentation](#implementation-and-experimentation)
-5. [Easy use](#easy-use)
+6. [Execution Commands](#execution-commands)
 
 ## Overview
 <p align="justify">
 Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves gradient-based methods by addressing common challenges such as zigzagging, suboptimal initialization, and manual learning rate tuning. SpGD introduces dynamic learning rate adjustment through Augmented Gradient Descent (AGD), controlled randomization for better exploration, and optimized movement patterns for enhanced convergence. It achieves remarkable accuracy on benchmarks, such as a near-zero error (1.7e-11) on convex functions like Quadratic, and significantly better proximity to global optima on non-convex functions like Ackley. SpGD also excels in deep learning tasks, achieving faster convergence and higher accuracy—e.g., 85% accuracy on CIFAR-10 in just 20 epochs using DenseNet-19, demonstrating its efficiency in large-scale neural network training and challenging optimization tasks.
 </p>
+
+---
+
+## Installation and Usage
+
+#### Installation
+
+```bash
+pip install spawngd
+```
+
+#### Usage
+
+You can use SpawnGD just like any other popular PyTorch optimizers by importing the `SpawnGD` class.
+
+```python3
+from spawngd import SpawnGD
+
+optimizer = SpawnGD(model.parameters(), lr=1e-1, weight_decay=1e-3)
+```
 
 ---
 
@@ -175,5 +196,5 @@ These results highlight the significant impact of the spawning step in improving
 </p>
 
 ---
-## Easy use
+## Execution Commands
 For ease of use with execution commands, you can utilize the `SPGD.ipynb`
