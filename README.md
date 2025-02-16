@@ -31,7 +31,7 @@ pip install spawngd
 
 #### Usage
 
-You can use SpawnGD just like any other popular PyTorch optimizers by importing the `SpawnGD` class.
+You can use SpawnGD just like any other popular PyTorch optimizers by importing the `SpawnGD` class:
 
 ```python3
 from spawngd import SpawnGD
@@ -39,6 +39,13 @@ from spawngd import SpawnGD
 optimizer = SpawnGD(model.parameters(), lr=1e-1, weight_decay=1e-3)
 ```
 
+Note that you should pass the current epoch number to optimizer.step() method:
+
+```python3
+# optimizer.step() This method is used by most of the popular optimizers but that's not our way.
+
+optimizer.step(epoch)
+```
 ---
 
 ## Provided Methods
