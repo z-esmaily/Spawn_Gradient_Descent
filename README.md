@@ -5,7 +5,6 @@
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [Installation and Usage](#installation-and-usage)
 3. [Provided Methods](#provided-methods)
 4. [Evaluation in 2D Space](#evaluation-of-optimization-methods-in-2d-space)
    - [Fixed Starting Point](#fixed-starting-point)
