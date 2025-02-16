@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "spawngd"
+version = "0.1.0"
+authors = [
+    { name = "Abolfazl Nasr", email = "abolfazl.nasr.mail@gmail.com" },
+    { name = "Fereshte Dehghani", email = "fdehghani@kashanu.ac.ir" },
+    { name = "Zahra Esmaily", email = "zari.esmaeily@gmail.com" }
+]
+description = "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Intended Audience :: Science/Research",
+]
+
+dependencies = [
+    "torch>=2.5.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/z-esmaily/Spawn_Gradient_Descent"
+"Bug Tracker" = "https://https://github.com/z-esmaily/Spawn_Gradient_Descent/issues"
+"Documentation" = "https://https://github.com/z-esmaily/Spawn_Gradient_Descent"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spawngd"]
