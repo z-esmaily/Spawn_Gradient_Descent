@@ -21,33 +21,6 @@ Spawning Gradient Descent (SpGD) is a novel optimization algorithm that improves
 
 ---
 
-## Installation and Usage
-
-#### Installation
-
-```bash
-pip install spawngd
-```
-
-#### Usage
-
-You can use SpawnGD just like any other popular PyTorch optimizers by importing the `SpawnGD` class:
-
-```python3
-from spawngd import SpawnGD
-
-optimizer = SpawnGD(model.parameters(), lr=1e-1, weight_decay=1e-3)
-```
-
-Note that you should pass the current epoch number to optimizer.step() method:
-
-```python3
-# optimizer.step() This method is used by most of the popular optimizers but that's not our way.
-
-optimizer.step(epoch)
-```
----
-
 ## Provided Methods
 The implementation includes the following optimization methods:
 - Adabelief
@@ -156,6 +129,33 @@ python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 
 ---
 ## SpGD in Deep Learning Models
+
+The spawngd package is now available for installation via pip! You can easily install it using the following command:
+
+#### Installation
+
+```bash
+pip install spawngd
+```
+
+#### Usage
+
+You can use SpawnGD just like any other popular PyTorch optimizers by importing the `SpawnGD` class:
+
+```python3
+from spawngd import SpawnGD
+
+optimizer = SpawnGD(model.parameters(), lr=1e-1, weight_decay=1e-3)
+```
+
+Note that you should pass the current epoch number to optimizer.step() method:
+
+```python3
+# optimizer.step() This method is used by most of the popular optimizers but that's not our way.
+
+optimizer.step(epoch)
+```
+---
 <p align="justify">
 SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into <b>ResNet-20</b> and <b>DenseNet-19</b> models and evaluated on the <b>CIFAR-10</b> and <b>Fashion-MNIST</b> datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
 </p>
