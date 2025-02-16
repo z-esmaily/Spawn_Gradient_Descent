@@ -11,9 +11,9 @@
    - [Fixed Starting Point](#fixed-starting-point)
    - [Random Starting Points](#random-starting-points)
 5. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
-   - [Pip package](#Pip_package)
-   - [Experimentation](#implementation-and-experimentation)
-6. [Execution Commands](#execution-commands)
+   - [Pip package](#pip_package)
+   - [Experiments](#experiments)
+6. [Ease of Use Evaluation](#ease_of_use_evaluations)
 
 ## Overview
 <p align="justify">
@@ -39,7 +39,7 @@ The implementation includes the following optimization methods:
 ## Evaluation of Optimization Methods In 2D space
 
 ### Fixed Starting Point
-To evaluate the runtime and minimum distance to the answer for various methods with a fixed starting point, run the following code:
+To evaluate the runtime and minimum distance to the answer for various methods with a fixed starting point, run the following code located in the `evaluation_2d` folder:
 
 ```bash
 python Compare_SpawnGD_Fix_InitPoint.py
@@ -106,7 +106,7 @@ If you encounter an error during execution, especially for the Rastrigin functio
 ---
 
 ### Random Starting Points
-To evaluate the average runtime and minimum distance to the answer for various methods with random starting points over 100 iterations, run the following code:
+To evaluate the average runtime and minimum distance to the answer for various methods with random starting points over 100 iterations, run the following code located in the `evaluation_2d` folder:
 
 ```bash
 python Compare_SpawnGD_Random_InitPoint.py --function_name <function_name>
@@ -121,7 +121,7 @@ python Compare_SpawnGD_Random_InitPoint.py --function_name <function_name>
 #### Time Efficiency Evaluation
 <p align="justify">
 To better compare convergence speeds, we considered the time required for each optimizer to reach a specified distance (epsilon) from the optimal solution. Each optimizer was executed 100 times for each benchmark function, and the average execution time was recorded. By default, epsilon was set to 0.01 for convex functions and 0.1 for non-convex functions.
-To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code:
+To evaluate the average runtime with consideration of an epsilon distance to the answer for various methods with random starting points over 100 iterations, run the following code located in the `evaluation_2d` folder:
 </p>
 
 ```bash
@@ -163,8 +163,8 @@ optimizer.step(epoch)
 SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into <b>ResNet-20</b> and <b>DenseNet-19</b> models and evaluated on the <b>CIFAR-10</b> and <b>Fashion-MNIST</b> datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
 </p>
 
-### Experimentation
-Our comparition implementation utilizes existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) for data handling and common model architectures within PyTorch. However, it introduces a novel SpGD optimizer (defined in `spawngd.py'), located in the <code>Deep_implementation/optimizers</code>, to enhance the performance.
+### Experiments
+Our comparison implementation utilizes existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) for data handling and common model architectures within PyTorch. However, it introduces a novel SpGD optimizer (defined in `spawngd.py'), located in the <code>Deep_implementation/optimizers</code>, to enhance the performance.
 
 To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
 
@@ -206,5 +206,6 @@ These results highlight the significant impact of the spawning step in improving
 </p>
 
 ---
-## Execution Commands
-For ease of use with execution commands, you can utilize the `SPGD.ipynb`
+## Ease of Use Evaluation
+For ease of use with execution commands in 2d, you can utilize the `spawngd_2d_evaluation_commands.ipynb` in `evaluation_2d` folder
+For ease of use with execution commands in deep, you can utilize the `spawngd_deep_evaluation_commands.ipynb` in `Deep_implementation` folder
