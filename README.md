@@ -11,7 +11,8 @@
    - [Fixed Starting Point](#fixed-starting-point)
    - [Random Starting Points](#random-starting-points)
 5. [SpGD in Deep Learning Models](#spgd-in-deep-learning-models)
-   - [Implementation and Experimentation](#implementation-and-experimentation)
+   - [Pip package](#Pip_package)
+   - [Experimentation](#implementation-and-experimentation)
 6. [Execution Commands](#execution-commands)
 
 ## Overview
@@ -130,6 +131,8 @@ python Compare_SpawnGD_Random_InitPoint_Eps_toMin.py
 ---
 ## SpGD in Deep Learning Models
 
+### Pip package
+
 The spawngd package is now available for installation via pip! You can easily install it using the following command:
 
 #### Installation
@@ -160,8 +163,8 @@ optimizer.step(epoch)
 SpGD showcases its effectiveness in deep learning by addressing challenges such as slow convergence and entrapment in local minima. The proposed optimizer was integrated into <b>ResNet-20</b> and <b>DenseNet-19</b> models and evaluated on the <b>CIFAR-10</b> and <b>Fashion-MNIST</b> datasets, two widely used benchmarks in image classification, to compare its performance against other optimizers.
 </p>
 
-### Implementation and Experimentation
-Our implementation utilizes existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) for data handling and common model architectures within PyTorch. However, it introduces a novel SpGD optimizer (defined in `spawngd.py'), located in the <code>Deep_implementation/optimizers</code>, to enhance the performance.
+### Experimentation
+Our comparition implementation utilizes existing code from the [SRSGD](https://github.com/minhtannguyen/SRSGD) for data handling and common model architectures within PyTorch. However, it introduces a novel SpGD optimizer (defined in `spawngd.py'), located in the <code>Deep_implementation/optimizers</code>, to enhance the performance.
 
 To evaluate the best accuracy, loss, and runtime for various optimizers on the CIFAR-10 dataset, run the `Cifar_Compare_Best_Accuracy_Time.py` file located in the `Deep_implementation` folder with the following command:
 
