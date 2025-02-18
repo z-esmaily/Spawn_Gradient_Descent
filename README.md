@@ -3,8 +3,12 @@
 <em>Official Python implementation of the manuscript "Spawning Gradient Descent (SpGD): A Novel Optimization Framework for Machine Learning and Deep Learning" by Moeinoddin Sheikhottayefe, Zahra Esmaily, and Fereshte Dehghani.</em>
 </p align="justify">
 
-   The core implementation of this project was done by [Zahra Esmaily](https://github.com/z-esmaily). We gratefully acknowledge [Abolfazl Nasr](https://github.com/abolfazlnasr) for developing the pip package.
+   The core implementation of this project was done by [Zahra Esmaily](https://github.com/z-esmaily). We acknowledge [Abolfazl Nasr](https://github.com/abolfazlnasr) for developing the pip package.
 
+## Contributors
+
+- **Core Developer:** Zahra Esmaily
+- **Pip Package Developer:** Abolfazl Nasr
 
 ## Table of Contents
 1. [Overview](#overview)
